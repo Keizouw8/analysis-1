@@ -1,0 +1,88 @@
+\documentclass[letterpaper]{article}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{marginnote}
+\usepackage{mathtools}
+
+\title{Homework 1}
+\author{Keizou Wang}
+\date{January 31, 2025}
+
+\titleformat{\section}{\normalfont\normalsize}{\bfseries\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize}{(\textit{\roman{subsection}})}{1em}{}
+
+\begin{document}
+
+\maketitle
+
+\section{Let $\mathbb{F}$ be an ordered field and $a, b, \epsilon \in \mathbb{F}$.}
+\subsection{Show that if $a < b + \epsilon$ for every $\epsilon > 0$, then $a \leq b$}
+\begin{gather*}
+\mathbb{F}
+\text{ is ordered} \Leftrightarrow
+P \hspace{3pt} \exists \hspace{3pt} \mathbb{F}
+\text{ where $P$ is the positive set and } \epsilon \in P \marginnote{order axiom} \\
+a<b+\epsilon \\
+a-b<\epsilon \marginnote{$<$ additivity} \\
+a-b<\epsilon \Rightarrow a-b\neq\epsilon \\
+a-b\neq\epsilon \Leftrightarrow a-b\notin P \\
+a-b\notin P \Rightarrow a-b=0 \lor -(a-b) \in P \marginnote{trichotomy} \\
+b-a=0 \lor b-a \in P \\
+\therefore \\
+\boxed{a \leq b}
+\end{gather*}
+\subsection{Use (\textit{i}) to show that if $|a-b|<\epsilon$ for all $\epsilon>0$, then $a=b$.}
+\begin{gather*}
+|a-b|<\epsilon \\
+-\epsilon < a-b < \epsilon \marginnote{FT abs-value} \\
+-\epsilon < a-b \land a-b < \epsilon \\
+\epsilon > -(a-b) \land a-b < \epsilon \marginnote{$<$ multiplicity} \\
+-(a-b) \notin P \land a-b \notin P \\
+\Rightarrow a-b=0 \marginnote{trichotomy} \\
+\therefore \\
+\boxed{a = b}
+\end{gather*}
+
+\section{Let $A \subseteq \mathbb{R}$. Define $-A=\{-a:a\in A\}$. Suppose that $A$ is non-empty and bounded below. Show that
+$\inf(A)=-\sup(-A)$.}
+\begin{gather*}
+\lnot\exists x \in A: x < \inf(A) \marginnote{inf analytic definition lower bound} \\
+-x>-\inf(A) \\
+\lnot\exists{k}\in-A:k=-x,k>-\inf(A) \Rightarrow -\inf(A) \text{ is upperbound of $-A$} \\ 
+\text{Given } \epsilon>0,\hspace{3pt}\exists\hspace{3pt}x\in A:x<\inf(A)+\epsilon \\
+-x > -\inf(A) - \epsilon \\
+x\in A \Rightarrow -x\in -A \\
+\hspace{3pt}\exists\hspace{3pt}k\in -A:k=-x,k>-\inf(A)-\epsilon \marginnote{satisfies both requirements for sup($-A$)} \\
+\therefore \\
+\sup(-A)=-\inf(A) \\
+\boxed{\inf(A)=-\sup(-A)}
+\end{gather*}
+
+\section{Let $A=\{\frac{n}{n+1}:n\in\mathbb{N}\}$. Prove that $\sup(A)=1, \inf(A)=\frac{1}{2}$.}
+\begin{gather*}
+A=\{f(n):n\in\mathbb{N},f(x)=\frac{x}{x+1}\} \\
+\line(1, 0){125} \\
+\text{Prove $\min A=\frac{1}{2}$:} \\
+\min A = \min f(x) \\
+f(k+1)-f(k)=\frac{k+1}{(k+1)+1}-\frac{k}{k+1} \\
+\frac{k+1}{k+2}-\frac{k}{k+1} \\
+\frac{k^2+2k+1-(k^2+2k)}{k^2+3k+2} \\
+\frac{1}{k^2+3k+2}>0 \marginnote{given $k\in\mathbb{N}$} \\
+f(k+1)-f(k)>0\Leftrightarrow f(k+1)>f(k) \\
+\min f(x) = f(\min \mathbb{N}) \\
+f(1) = \frac{1}{1+1} = \frac{1}{2} \\
+\therefore \\
+\min A = \frac{1}{2} \\
+\line(1, 0){125}
+\end{gather*}
+\begin{gather*}
+x^2
+\end{gather*}
+
+\section{Problem 4}
+
+\section{Problem 5}
+
+\end{document}
