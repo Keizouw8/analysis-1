@@ -46,9 +46,9 @@ b\leq a \land a\leq b \\
 \section{Let $A \subseteq \mathbb{R}$. Define $-A=\{-a:a\in A\}$. Suppose that $A$ is non-empty and bounded below. Show that
 $\inf(A)=-\sup(-A)$.}
 \begin{gather*}
-\forall x \in A: x \geq \inf(A) \marginnote{inf analytic definition lower bound} \\
+x \in A \Rightarrow x \geq \inf(A) \marginnote{inf analytic definition lower bound} \\
 -x\leq-\inf(A) \\
-\forall x'\in -A: -x'\in A \Rightarrow \forall x'\in -A: x' \leq-\inf(A) \\
+x'\in -A \Rightarrow x'=-x,x\in A \Rightarrow x' \leq-\inf(A) \\
 -\inf(A) \text{ is an upper bound of $-A$} \\ 
 \text{Given } \epsilon>0,\hspace{3pt}\exists\hspace{3pt}x\in A:x<\inf(A)+\epsilon \\
 -x > -\inf(A) - \epsilon \\
@@ -91,27 +91,49 @@ n\leq n+1 \\
 \section{Let $A,B\supseteq\mathbb{R}:$}
 \subsection{$\exists\sup(A),\exists\sup(B),A\subseteq B$. Show that $\sup(A)\leq\sup(B)$.}
 \begin{gather*}
-	\exists b\in B: b > \sup(A) \lor \neg \exists b\in B: b > \sup(A) \marginnote{a tautology ($a\lor\neg a$)} \\
-	\line(1, 0){125} \\
-	\text{Case 1} \\
-	\exists b\in B: b > \sup(A) \\
-	\sup(A) < b \leq \sup(B) \\
-	\sup(A) < \sup(B) \\
-	\line(1, 0){125} \\
-	\text{Case 2} \\
-	\neg \exists b\in B: b > \sup(A) \\
-	\forall b\in B:b\leq\sup(A) \\
-	\Rightarrow \text{$\sup(A)$ is an upperbound of $B$} \\
-	\text{Given }\epsilon>0: \exists a \in A: a>\sup(A)-\epsilon \\
-	B\supset A \Rightarrow a\in B \\
-	a \in B: a>\sup(A)-\epsilon \\
-	\sup(A) = \sup(B) \\
-	\line(1, 0){125} \\
-	\sup(A) < \sup(B) \lor \sup(A) = \sup(B) \\
-	\therefore \\
-	\boxed{\sup(A)\leq\sup(B)}
+\exists b\in B: b > \sup(A) \lor \neg \exists b\in B: b > \sup(A) \marginnote{a tautology ($a\lor\neg a$)} \\
+\line(1, 0){125} \\
+\text{Case 1} \\
+\exists b\in B: b > \sup(A) \\
+\sup(A) < b \leq \sup(B) \\
+\sup(A) < \sup(B) \\
+\line(1, 0){125} \\
+\text{Case 2} \\
+\neg \exists b\in B: b > \sup(A) \\
+\Leftrightarrow b\in B\Rightarrow b\leq\sup(A) \\
+\Rightarrow \text{$\sup(A)$ is an upperbound of $B$} \\
+\text{Given }\epsilon>0: \exists a \in A: a>\sup(A)-\epsilon \\
+B\supset A \Rightarrow a\in B \\
+a \in B: a>\sup(A)-\epsilon \\
+\sup(A) = \sup(B) \\
+\line(1, 0){125} \\
+\sup(A) < \sup(B) \lor \sup(A) = \sup(B) \\
+\therefore \\
+\boxed{\sup(A)\leq\sup(B)}
 \end{gather*}
 \subsection{$\sup(A)<\sup(B)$. Show that there exists $b\in B$ that is an upper bound of $A$. Show that this result does not hold if we instead assume that $\sup(A)\leq\sup(B)$.}
+\begin{gather*}
+\sup(A)\leq\sup(B) \\
+\Diamond(\sup(A)=\sup(B)=k,k\in\mathbb{R}) \\
+b\in B \Rightarrow b\leq k \\
+a\in A \Rightarrow a\leq k \\
+\Diamond(\max(b)<k\land \max(a)=k) \\
+\max(b)<\max(a) \\
+\therefore \\
+\boxed{\sup(A)\leq\sup(B) \Rightarrow \Diamond\neg\exists b\in B:b\text{ is an upper bound of }A} \\
+\line(1, 0){125} \\
+\sup(A)<\sup(B) \\
+\text{Given }\epsilon>0:\exists b\in B:b>\sup(B)-\epsilon \\
+b+\epsilon>\sup(B) \Rightarrow b+\epsilon>\sup(A) \\
+b+\epsilon-\sup(A)>0 \\
+b-\sup(A)>-\epsilon \\
+-(b-\sup(A))<\epsilon \\
+-(b-\sup(A))\notin P \\
+b-\sup(A)\in P \lor b-\sup(A)=0 \marginnote{trichotomy} \\
+b\geq\sup(A)\geq a\\
+\therefore \\
+\boxed{\sup(A)<\sup(B) \Rightarrow \exists b\in B:b\text{ is an upper bound of }A}
+\end{gather*}
 
 \section{For $A,B\supseteq \mathbb{R}$, define}
 \begin{gather*}
@@ -123,14 +145,38 @@ A\cdot B=\{a\cdot b:a\in A,b\in B\}
 A&=\{3,1,0\} \\
 B&=\{2,0,2,3\} \\
 A+B&=\{3+2,3+0,3+2,3+3,1+2,1+0,1+2,1+3,0+2,0+0,0+2,0+3\} \\
-&=\{5,3,5,6,3,1,3,4,2,0,2,3\} \\
 &=\{5,3,6,1,4,2,0\} \\
 A\cdot B&= \{3\cdot 2,3\cdot 0,3\cdot 2,3\cdot 3,1\cdot 2,1\cdot 0,1\cdot 2,1\cdot 3,0\cdot 2,0\cdot 0,0\cdot 2,0\cdot 3\} \\
-&=\{6,0,6,9,2,0,2,3,0,0,0,0\} \\
 &=\{6,0,9,2,3\}
 \end{align*}
 \subsection{Assume that $\sup(A)$ and $\sup(B)$ exist. Prove that $\sup(A+B)=\sup(A)+\sup(B)$.}
+\begin{gather*}
+a \in A \Rightarrow a \leq \sup(A) \\
+b \in B \Rightarrow b \leq \sup(B) \\
+a+b\leq\sup(A)+\sup(B) \\
+c \in A+B \Rightarrow c=a+b,a\in A,b\in B \\
+c\leq\sup(A)+\sup(B) \\
+\sup(A)+\sup(B)\text{ is an upper bound of }A+B \\
+\text{Given }\epsilon>0: \\
+\exists a\in A:a>\sup(A)-\epsilon \\
+\exists b\in B:b>\sup(B)-\epsilon \\
+a+b>\sup(A)+\sup(B)-2\epsilon \\
+2\epsilon>0 \Rightarrow a+b>\sup(A)+\sup(B)-\epsilon \\
+a+b\in A+B \Rightarrow \exists c \in A+B:c>(\sup(A)+\sup(B))-\epsilon \\
+\therefore \\
+\boxed{\sup(A+B)=\sup(A)+\sup(B)}
+\end{gather*}
 \subsection{Give an example of sets $A,B$ where $\sup(A\cdot B)\neq\sup(A)\cdot\sup(B)$.}
+\begin{gather*}
+A=\{-1\}, B=\{1,2\} \\
+\sup(A)=-1 \\
+\sup(B)=2 \\
+\sup(A)\cdot\sup(B)=-2 \\
+A\cdot B=\{-1, -2\} \\
+\sup(A\cdot B)=-1 \\
+-1\neq-2 \\
+\boxed{\sup(A\cdot B)\neq\sup(A)\cdot\sup(B)}
+\end{gather*}
 \pagebreak
 \setcounter{section}{0}
 
