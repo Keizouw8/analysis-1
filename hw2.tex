@@ -1,0 +1,51 @@
+\documentclass[letterpaper]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{marginnote}
+\usepackage{mathtools}
+
+\title{Homework 2}
+\author{Keizou Wang}
+\date{February 12, 2025}
+
+\titleformat{\section}{\normalfont\normalsize}{\bfseries\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize}{(\textit{\roman{subsection}})}{1em}{}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+\subsection{Show that given finitely many countable sets $A_1,A_2,\dotsb,A_n$, the set $A_1\times A_2\times\dotsb\times A_n$ is also countable.}
+\begin{gather*}
+|A_k|=|\mathbb{N}|\Rightarrow\exists f_k:\mathbb{N}\rightarrow A_k \text{ is bijective} \\
+f(x_1,x_2,\dotsb,x_n)=(f_1(x_1),f_2(x_2),\dotsb,f_n(x_n)): x_1,x_2,\dotsb,x_n\in\mathbb{N} \\
+f:\mathbb{N}\times\mathbb{N}\times\dotsb\times\mathbb{N}\rightarrow A_1\times A_2\times\dotsb\times A_n\text{ is bijective} \\
+\line(1, 0){125} \\
+h_2(x_1, x_2)=2^{n-1}(2m-1): x_1,x_2\in\mathbb{N} \\
+h_2: \mathbb{N}\times\mathbb{N}\rightarrow\mathbb{N}\text{ is bijective} \\
+h_3(x_1,x_2,x_3)=h_2(h_2(x_1,x_2),x_3):x_1,x_2,x_3\in\mathbb{N}
+h_2(x_1,x_2) \\
+h_3: \mathbb{N}\times\mathbb{N}\times\mathbb{N}\rightarrow\mathbb{N}\text{ is bijective} \\
+h_k(x_1,x_2,\dotsb,x_k)=h_{k-1}(h_{k-1}(x_1,x_2,\dotsb,x_{k-1}),x_k):x_1,x_2,\dotsb,x_k\in\mathbb{N} \\
+h_k:\mathbb{N}\times\mathbb{N}\times\dotsb\times\mathbb{N}\rightarrow\mathbb{N}\text{ is bijective} \\
+\text{Let }g_n=h_n^{-1}\Rightarrow g_n:\mathbb{N}\rightarrow\mathbb{N}\times\mathbb{N}\times\dotsb\times\mathbb{N}\text{ is bijective} \\
+\line(1, 0){125} \\
+f\circ g: \mathbb{N}\rightarrow A_1\times A_2\times\dotsb\times A_n\text{ is bijective} \\
+\therefore \\
+\boxed{|A_1\times A_2\times\dotsb\times A_n|=|\mathbb{N}|}
+\end{gather*}
+\subsection{Is it true that given countably many countable sets $A_1,A_2,\dotsb$, the set $A_1\times A_2\times\dotsb$ is also countable? Justify your answer.}
+\begin{center}
+Assume bijection, all output pairs can be represented as:\marginnote{$f_{nm}$ as in section (\textit{i})} \newline\newline
+\begin{tabular}{c c c c c}
+$(f_{11}(x_{11})$ & $f_{12}(x_{12})$ & $\dotsb$ & $f_{1m}(x_{1m})$ & $\dotsb)$ \\
+$(f_{21}(x_{21})$ & $f_{22}(x_{22})$ & $\dotsb$ & $f_{2m}(x_{2m})$ & $\dotsb)$ \\
+$(f_{n1}(x_{n1})$ & $f_{n2}(x_{n2})$ & $\dotsb$ & $f_{nm}(x_{nm})$ & $\dotsb)$
+\end{tabular}
+$\vdots$ \\
+Consider the pair: ()
+\end{center}
+
+\end{document}
