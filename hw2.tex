@@ -4,6 +4,7 @@
 \usepackage{titlesec}
 \usepackage{marginnote}
 \usepackage{mathtools}
+\usepackage{changepage}
 
 \title{Homework 2}
 \author{Keizou Wang}
@@ -38,14 +39,104 @@ f\circ g: \mathbb{N}\rightarrow A_1\times A_2\times\dotsb\times A_n\text{ is bij
 \end{gather*}
 \subsection{Is it true that given countably many countable sets $A_1,A_2,\dotsb$, the set $A_1\times A_2\times\dotsb$ is also countable? Justify your answer.}
 \begin{center}
-Assume bijection, all output pairs can be represented as:\marginnote{$f_{nm}$ as in section (\textit{i})} \newline\newline
+Assume bijection, all output tuples can be represented as:\marginnote{$f_{nm}$ as in section (\textit{i}) is bijective between some $A_k$ and $\mathbb{N}$} \newline\newline
 \begin{tabular}{c c c c c}
 $(f_{11}(x_{11})$ & $f_{12}(x_{12})$ & $\dotsb$ & $f_{1m}(x_{1m})$ & $\dotsb)$ \\
 $(f_{21}(x_{21})$ & $f_{22}(x_{22})$ & $\dotsb$ & $f_{2m}(x_{2m})$ & $\dotsb)$ \\
 $(f_{n1}(x_{n1})$ & $f_{n2}(x_{n2})$ & $\dotsb$ & $f_{nm}(x_{nm})$ & $\dotsb)$
-\end{tabular}
-$\vdots$ \\
-Consider the pair: ()
+\end{tabular} \newline\newline
+Consider the tuple: $R=(f_{11}(x_{11}+1),f_{22}(x_{22}+1),\dotsb,f_{nn}(x_{nn}+1),\dotsb)$ \\
+$R$ will differ from every row by at least one value along the diagonal because $f_{nn}$ is bijective, so $a\neq b\Rightarrow f_{nn}(a)\neq f_{nn}(b)$, and $x_{nn}\neq x_{nn}+1$. However, $R\in A_1\times A_2\times\dotsb$ which means it should be indexable in the bijection, a contradiction. \\
+$\newline\therefore$ \\
+$\newline\boxed{|A_1\times A_2\times\dotsb\times A_n|\neq|\mathbb{N}|}$
 \end{center}
+
+\section{}
+\subsection{Let $\mathcal{F}$ be the collection of all functions $f:\{0,1\}\rightarrow\mathbb{N}$. Is $\mathcal{F}$ countable? Justify your answer.}
+\begin{gather*}
+f\in\mathcal{F}\Rightarrow f(x)=\begin{cases}
+n & \text{if } x=0:n\in\mathbb{N} \\
+m & \text{if } x=1:m\in\mathbb{N}
+\end{cases} \\
+g=(n,m)\mapsto (x\mapsto\begin{cases}
+n & \text{if } x=0 \\
+m & \text{if } x=1
+\end{cases}:n,m\in\mathbb{N}) \\
+g:\mathbb{N}\times\mathbb{N}\rightarrow\mathcal{F}\text{ is bijective} \\
+|\mathcal{F}|=|\mathbb{N}\times\mathbb{N}|=|\mathbb{N}| \\
+\therefore \\
+\boxed{|\mathcal{F}|=|\mathbb{N}|}
+\end{gather*}
+\subsection{Let $\mathcal{F}$ be the collection of all functions $f:\mathbb{N}\rightarrow\{0,1\}$. Is $\mathcal{F}$ countable? Justify your answer.}
+\begin{gather*}
+F\subset\mathcal{F},F\in \{f(x)=\text{round}(a^x): n\in\mathbb{N},a\in(0, 1)\} \\
+g=a\mapsto(x\mapsto\text{round}(a^x)):n\in\mathbb{N},a\in(0, 1) \\
+g:(0,1)\rightarrow F\text{ is bijective} \\
+|\mathcal{F}|\geq|F|=|(0,1)|=|\mathbb{R}|>|\mathbb{N}| \marginnote{$|(0,1)|=|\mathbb{R}|$ shown in \textbf{3}(\textit{ii})} \\
+\therefore \\
+\boxed{|\mathcal{F}|\neq|\mathbb{N}|}
+\end{gather*}
+\subsection{Let $\mathcal{F}$ be the collection of all functions $f:\mathbb{N}\rightarrow\mathbb{N}$. Is $\mathcal{F}$ countable? What about $f:\mathbb{R}\rightarrow\mathbb{R}$? Justify your answers.}
+\begin{gather*}
+F\subset\mathcal{F},F=\{f(n)=\lceil rn\rceil:n\in\mathbb{N},r\in\mathbb{R}\} \\
+g=r\mapsto(n\mapsto\lceil rn\rceil):n\in\mathbb{N},r\in\mathbb{R} \\
+g:\mathbb{R}\rightarrow F\text{ is bijective}\Rightarrow|F|=|\mathbb{R}|
+\end{gather*}
+\begin{gather*}
+|\mathcal{F}|\geq|F|=|\mathbb{R}|>|\mathbb{N}| \\
+\therefore \\
+\boxed{|\mathcal{F}|\neq|\mathbb{N}|:\mathcal{F}\text{ set of all }f:\mathbb{N}\rightarrow\mathbb{N}} \\
+\line(1, 0){125} \\
+F\subset\mathcal{F},F=\{f(x)=rx:x\in\mathbb{R},r\in\mathbb{R}\} \\
+g=r\mapsto(x\mapsto rx):x,r\in\mathbb{R} \\
+g:\mathbb{R}\rightarrow F\text{ is bijective}\Rightarrow|F|=|\mathbb{R}| \\
+|\mathcal{F}|\geq|F|=|\mathbb{R}|>|\mathbb{N}| \\
+\therefore \\
+\boxed{|\mathcal{F}|\neq|\mathbb{N}|:\mathcal{F}\text{ set of all }f:\mathbb{R}\rightarrow\mathbb{R}} \\
+\end{gather*}
+
+\section{}
+\subsection{Let $(0, 1)$ be the open interval from 0 to 1. Show that $|(0, 1)|=|\mathbb{R}^+|$ by finding an explicit bijection.}
+\begin{gather*}
+\boxed{f(x)=\frac{1}{x+1}}
+\end{gather*}
+\subsection{Show that $|(0, 1)|=|\mathbb{R}|$ by finding an explicit bijection.}
+\begin{gather*}
+\boxed{f(x)=\frac{1}{\pi}\arctan(x)+\frac{1}{2}}
+\end{gather*}
+\subsection{Show that $|\mathcal{P}(\mathbb{N})|=|\mathbb{R}^+|$.}
+\begin{adjustwidth}{2.35em}{0pt}
+Consider $r\in\mathbb{R}^+$ can be represented using floating point notation. The function $f$
+\end{adjustwidth}
+
+\section{A real number $x$ is said to be \textit{algebraic} (over $\mathbb{Q}$) if it satisfies some polynomial equation $a_nx^n+a_{n-1}x^{n-1}+\dotsb+a_1x+a_0=0$, where each $a_i\in\mathbb{Q},a_n\neq0$. If $x$ is not algebraic, it is called \textit{transcendental}.}
+\subsection{Show that the set of all polynomials over $\mathbb{Q}$ is countable.}
+\begin{gather*}
+P=\{a_0+a_1x+a_2x^2\dotsb+a_nx^n:a_0,a_1,a_2,\dotsb,a_n\in\mathbb{Q}\} \marginnote{set of all polynomials over $\mathbb{Q}$} \\
+f=(c_0,c_1,c_2,\dotsb,c_n)\mapsto((x)\mapsto c_0+c_1x+c_2x^2\dotsb+c_nx^n) \\
+f: \mathbb{Q}\times\mathbb{Q}\times\dotsb\times\mathbb{Q}\rightarrow P \text{ is bijective} \\
+\line(1, 0){125} \\
+|\mathbb{Q}|=|\mathbb{N}|\Rightarrow\exists q:\mathbb{N}\rightarrow\mathbb{Q}\text{ is bijective} \\
+g(x_0,x_1,\dotsb,x_n)=(q(x_0),q(x_1),\dotsb,q(x_n)) \\
+g:\mathbb{N}\times\mathbb{N}\times\dotsb\times\mathbb{N}\rightarrow\mathbb{Q}\times\mathbb{Q}\times\dotsb\times\mathbb{Q}\text{ is bijective} \\
+\line(1, 0){125} \\
+|\mathbb{N}\times\mathbb{N}\times\dotsb\times\mathbb{N}|=|\mathbb{N}| \marginnote{proven in work of \textbf{1}(\textit{i})} \Rightarrow \exists h:\mathbb{N}\rightarrow\mathbb{N}\times\mathbb{N}\times\dotsb\times\mathbb{N}\text{ is bijective} \\
+f\circ g\circ h:\mathbb{N}\rightarrow P\text{ is bijective} \\
+\therefore \\
+\boxed{|P|=|\mathbb{N}|}
+\end{gather*}
+\subsection{Prove that there are countably many algebraic numbers.}
+\begin{gather*}
+x
+\end{gather*}
+\subsection{Prove that there are uncountably many transcendental numbers.}
+\begin{gather*}
+\text{Let T denote the set of transcendental numbers:} \\
+S\subset T, S=\{r\pi:r\in\mathbb{R}\} \\
+s(r)=r\pi:r\in\mathbb{R} \\
+s:\mathbb{R}\rightarrow S \text{ is bijective} \\
+|T|\geq|S|=|\mathbb{R}|>|\mathbb{N}| \\
+\boxed{|T|\neq|\mathbb{N}|}
+\end{gather*}
 
 \end{document}
