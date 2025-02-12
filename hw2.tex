@@ -105,9 +105,12 @@ g:\mathbb{R}\rightarrow F\text{ is bijective}\Rightarrow|F|=|\mathbb{R}| \\
 \boxed{f(x)=\frac{1}{\pi}\arctan(x)+\frac{1}{2}}
 \end{gather*}
 \subsection{Show that $|\mathcal{P}(\mathbb{N})|=|\mathbb{R}^+|$.}
-\begin{adjustwidth}{2.35em}{0pt}
-Consider $r\in\mathbb{R}^+$ can be represented using floating point notation. The function $f$
-\end{adjustwidth}
+\begin{gather*}
+f(S)=\sum_{k=1}^{|S|}2^{-S_k}: S\in\mathcal{P}(\mathbb{N}) \marginnote{$S_k$ is $k^\text{th}$ element of $S$} \\
+f:\mathcal{P}(\mathbb{N})\rightarrow \mathbb{R}^+ \text{ is bijective} \\
+\therefore \\
+\boxed{|\mathcal{P}(\mathbb{N})|=|\mathbb{R}^+|}
+\end{gather*}
 
 \section{A real number $x$ is said to be \textit{algebraic} (over $\mathbb{Q}$) if it satisfies some polynomial equation $a_nx^n+a_{n-1}x^{n-1}+\dotsb+a_1x+a_0=0$, where each $a_i\in\mathbb{Q},a_n\neq0$. If $x$ is not algebraic, it is called \textit{transcendental}.}
 \subsection{Show that the set of all polynomials over $\mathbb{Q}$ is countable.}
@@ -126,9 +129,9 @@ f\circ g\circ h:\mathbb{N}\rightarrow P\text{ is bijective} \\
 \boxed{|P|=|\mathbb{N}|}
 \end{gather*}
 \subsection{Prove that there are countably many algebraic numbers.}
-\begin{gather*}
-x
-\end{gather*}
+\begin{adjustwidth}{2.35em}{0pt}
+Let $A$ denote the set of all algebraic numbers. There are a countable amount of polynomials and each contains an arbitrarily large amount of roots (fundamental theory of algebra). Therefore, because the amounts of roots are finite the cardinality can't be more than $|\mathbb{N}|\times|\mathbb{N}|$. However there is at least one root for each polynomial so there are at least $|\mathbb{N}|$. $|\mathbb{N}|\leq|A|\leq|\mathbb{N}|\times|\mathbb{N}|=|\mathbb{N}|\therefore|A|=|\mathbb{N}|$.
+\end{adjustwidth}
 \subsection{Prove that there are uncountably many transcendental numbers.}
 \begin{gather*}
 \text{Let T denote the set of transcendental numbers:} \\
