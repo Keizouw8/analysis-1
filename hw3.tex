@@ -65,10 +65,52 @@ n\geq\ceil[\bigg]{\frac{1}{\epsilon^2}}=N_\epsilon \\
 \end{gather*}
 
 \section{}
+\subsection{Find the limit of the following sequence, if it exists $x_n=\sqrt{n^2+n}-n$}
+\begin{gather*}
+x_{n+1}-x_n\geq0 \\
+\sqrt{(n+1)^2+(n+1)}-(n+1)-(\sqrt{n^2+n}-n)\geq0 \\
+\sqrt{n^2+3n+2}-n-1-\sqrt{n^2+n}+n\geq0 \\
+\sqrt{n^2+3n+2}-\sqrt{n^2+n}\geq1 \\
+\frac{n^2+3n+2-(n^2+n)}{\sqrt{n^2+3n+2}+\sqrt{n^2+n}}\geq1 \\
+\frac{2n+2}{\sqrt{n^2+3n+2}+\sqrt{n^2+n}}\geq1 \\
+2n+2\geq\sqrt{n^2+3n+2}+\sqrt{n^2+n} \\
+\Leftarrow 2n+2\geq\sqrt{n^2+3n+(\frac{3}{2})^2}+\sqrt{n^2+n+(\frac{1}{2})^2} \\
+2n+2\geq\sqrt{(n+\frac{3}{2})^2}+\sqrt{(n+\frac{1}{2})^2} \\
+2n+2\geq n+\frac{3}{2}+n+\frac{1}{2} \\
+2n+2\geq2n+2 \\
+\text{$x_n$ is monotonic increasing} \\
+\line(1, 0){125} \\
+\sqrt{n^2+n}-n\leq\frac{1}{2} \\
+\frac{1}{2}-(\sqrt{n^2+n}-n)\geq0 \\
+\frac{1}{2}-\frac{n}{\sqrt{n^2+n}+n}\geq0 \\
+\Leftarrow \frac{1}{2}-\frac{n}{\sqrt{n^2}+n}\geq0 \\
+\frac{1}{2}-\frac{n}{n+n}\geq0 \\
+0\geq0 \Rightarrow x_n\leq\frac{1}{2} \\
+\frac{1}{2}\text{ is an upperbound of }x_n \\
+\line(1, 0){125} \\
+\sqrt{n^2+n}-n>\frac{1}{2}-\epsilon \\
+\frac{1}{2}-\sqrt{n^2+n}+n<\epsilon \\
+\text{Given }\epsilon>0:\exists n\in\mathbb{N}:x_n\geq\frac{1}{2}-\epsilon
+\end{gather*}
+\subsection{Find the limit of the following sequence, if it exists $x_n=\frac{1}{(n+1)^2}+\frac{1}{(n+2)^2}+\dotsb+\frac{1}{(n+n)^2}$}
+\begin{gather*}
+x_n=\sum_{x=1}^{n}\frac{1}{(n+x)^2} \\
+0<\sum_{x=1}^{n}\frac{1}{(n+x)^2}<\sum_{x=1}^{n}\frac{1}{x^2}\\
+\lim_{n\rightarrow\infty}0=0 \\
+\lim_{n\rightarrow\infty}\sum_{x=1}^{n}\frac{1}{x^2}=0 \marginnote{proven in lecture notes} \\
+\therefore \\
+\boxed{\lim_{n\rightarrow\infty}x_n=0\text{ by squeeze theorem}}
+\end{gather*}
 
-\section{}
-\subsection{}
-\subsection{Show that $\{x_n\}$ is monotonic increasing}
+\section{Discuss the convergence of the sequence $\frac{1}{n+1}+\frac{1}{n+2}+\dotsb+\frac{1}{n+n}$ by proving:}
+\subsection{Show that $\{x_n\}$ is bounded.}
+\begin{gather*}
+\frac{1}{n+1}+\frac{1}{n+2}+\dotsb+\frac{1}{n+n}=\sum_{x=1}^{n}\frac{1}{n+x} \\
+\sum_{x=1}^{n}\frac{1}{n+x}<\sum_{x=1}^{n}\frac{1}{n}=1 \\
+\therefore \\
+\boxed{\{x_n\}\text{ is upper bounded by }1}
+\end{gather*}
+\subsection{Show that $\{x_n\}$ is monotonic increasing.}
 \begin{gather*}
 x_{n+1}-x_n>0 \\
 \frac{1}{(n+1)+1}+\frac{1}{(n+1)+2}+\dotsb+\frac{1}{2(n+1)}-(\frac{1}{n+1}+\frac{1}{n+2}+\dotsb+\frac{1}{2n})>0 \\
@@ -78,6 +120,14 @@ x_{n+1}-x_n>0 \\
 n+1>0 \marginnote{true for $n\in\mathbb{N}$} \\
 \therefore \\
 \boxed{\{x_n\} \text{ is monotonic increasing}}
+\end{gather*}
+\subsection{Find the limit of $\{x_n\}$ by comparing it to an integral.}
+\begin{gather*}
+\int_{1}^{2}\frac{1}{x}dx=\lim_{n\rightarrow\infty}\sum_{x=1}^{n}\frac{2-1}{n}\cdot\frac{1}{1+x\frac{2-1}{n}} \\
+=\lim_{n\rightarrow\infty}\sum_{x=1}^{n}\frac{1}{n}\cdot\frac{1}{1+\frac{x}{n}} \\
+=\lim_{n\rightarrow\infty}\sum_{x=1}^{n}\frac{1}{n+x} \\
+\therefore \\
+\boxed{\{x_n\}=\int_{1}^{2}\frac{1}{x}dx=\ln(2)}
 \end{gather*}
 
 \end{document}
