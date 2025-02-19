@@ -57,42 +57,37 @@ n\geq\ceil[\bigg]{\frac{1}{\epsilon^2}}=N_\epsilon \\
 \Leftarrow \abs[\bigg]{\frac{(n+1)r}{n}-r}<\epsilon \\
 \Leftarrow \abs[\bigg]{r+\frac{r}{n}-r}<\epsilon \\
 \Leftarrow \abs[\bigg]{\frac{r}{n}}<\epsilon \\
-\Leftarrow \frac{r}{n}<\epsilon \marginnote{always positive} \\
-\Leftarrow n\geq\ceil[\bigg]{\frac{r}{\epsilon}}=N_\epsilon \\
+\Leftarrow n\geq\ceil[\bigg]{\frac{\abs{r}}{\epsilon}}=N_\epsilon \\
 \text{Almost-geometric sequence: } \lim_{n\rightarrow\infty}\abs[\bigg]{\frac{x_{n+1}}{x_n}}=r:0<r<1,x_n=nr^n \\
 \therefore \\
 \boxed{\lim_{n\rightarrow\infty}nr^n=0}
 \end{gather*}
-
-\section{}
-\subsection{Find the limit of the following sequence, if it exists $x_n=\sqrt{n^2+n}-n$}
+\subsection{Use (\textit{i}) to show that $\{\frac{\ln(n)}{n}\}\rightarrow0$.}
 \begin{gather*}
-x_{n+1}-x_n\geq0 \\
-\sqrt{(n+1)^2+(n+1)}-(n+1)-(\sqrt{n^2+n}-n)\geq0 \\
-\sqrt{n^2+3n+2}-n-1-\sqrt{n^2+n}+n\geq0 \\
-\sqrt{n^2+3n+2}-\sqrt{n^2+n}\geq1 \\
-\frac{n^2+3n+2-(n^2+n)}{\sqrt{n^2+3n+2}+\sqrt{n^2+n}}\geq1 \\
-\frac{2n+2}{\sqrt{n^2+3n+2}+\sqrt{n^2+n}}\geq1 \\
-2n+2\geq\sqrt{n^2+3n+2}+\sqrt{n^2+n} \\
-\Leftarrow 2n+2\geq\sqrt{n^2+3n+(\frac{3}{2})^2}+\sqrt{n^2+n+(\frac{1}{2})^2} \\
-2n+2\geq\sqrt{(n+\frac{3}{2})^2}+\sqrt{(n+\frac{1}{2})^2} \\
-2n+2\geq n+\frac{3}{2}+n+\frac{1}{2} \\
-2n+2\geq2n+2 \\
-\text{$x_n$ is monotonic increasing} \\
-\line(1, 0){125} \\
-\sqrt{n^2+n}-n\leq\frac{1}{2} \\
-\frac{1}{2}-(\sqrt{n^2+n}-n)\geq0 \\
-\frac{1}{2}-\frac{n}{\sqrt{n^2+n}+n}\geq0 \\
-\Leftarrow \frac{1}{2}-\frac{n}{\sqrt{n^2}+n}\geq0 \\
-\frac{1}{2}-\frac{n}{n+n}\geq0 \\
-0\geq0 \Rightarrow x_n\leq\frac{1}{2} \\
-\frac{1}{2}\text{ is an upperbound of }x_n \\
-\line(1, 0){125} \\
-\sqrt{n^2+n}-n>\frac{1}{2}-\epsilon \\
-\frac{1}{2}-\sqrt{n^2+n}+n<\epsilon \\
-\text{Given }\epsilon>0:\exists n\in\mathbb{N}:x_n\geq\frac{1}{2}-\epsilon
+\abs[\bigg]{\frac{\ln(n)}{n}-0}<\epsilon \\
+\ln(n)<n\epsilon \\
+n>\frac{\ln(n)}{\epsilon} \\
+n\geq\ceil[\bigg]{\frac{1}{\epsilon'}}=N_\epsilon \marginnote{$\epsilon'$ arbitrarily small still} \\
+\exists N_\epsilon:\forall n\geq N_\epsilon\Rightarrow\abs[\bigg]{\frac{\ln(n)}{n}}<\epsilon \\
+\therefore \\
+\boxed{\lim_{n\rightarrow\infty}\frac{\ln(n)}{n}=0}
 \end{gather*}
-\subsection{Find the limit of the following sequence, if it exists $x_n=\frac{1}{(n+1)^2}+\frac{1}{(n+2)^2}+\dotsb+\frac{1}{(n+n)^2}$}
+
+\section{Find the limits of the following sequences, if they exist:}
+\subsection{$x_n=\sqrt{n^2+n}-n$}
+\begin{gather*}
+\abs{\sqrt{n^2+n}-n-\frac{1}{2}}<\epsilon \\
+\abs[\bigg]{\frac{n^2+n-(n+\frac{1}{2})^2}{\sqrt{n^2+n}+(n+\frac{1}{2})}}<\epsilon \\
+\abs[\bigg]{\frac{n^2+n-(n^2+n+\frac{1}{4})}{\sqrt{n^2+n}+n+\frac{1}{2}}}<\epsilon \\
+\abs[\bigg]{\frac{-\frac{1}{4}}{\sqrt{n^2+n}+n+\frac{1}{2}}}<\epsilon \\
+\frac{\frac{1}{4}}{\sqrt{n^2+n}+n+\frac{1}{2}}<\epsilon \\
+\Leftarrow\frac{1}{4n}<\epsilon \\
+n\geq\ceil[\bigg]{\frac{1}{4\epsilon}}=N_\epsilon \\
+\exists N_\epsilon:\forall n\geq N_\epsilon\Rightarrow\abs{\sqrt{n^2+n}-n-\frac{1}{2}}<\epsilon \\
+\therefore \\
+\boxed{\lim_{n\rightarrow\infty}x_n=\frac{1}{2}}
+\end{gather*}
+\subsection{$x_n=\frac{1}{(n+1)^2}+\frac{1}{(n+2)^2}+\dotsb+\frac{1}{(n+n)^2}$}
 \begin{gather*}
 x_n=\sum_{x=1}^{n}\frac{1}{(n+x)^2} \\
 0<\sum_{x=1}^{n}\frac{1}{(n+x)^2}<\sum_{x=1}^{n}\frac{1}{x^2}\\
@@ -129,5 +124,18 @@ n+1>0 \marginnote{true for $n\in\mathbb{N}$} \\
 \therefore \\
 \boxed{\{x_n\}=\int_{1}^{2}\frac{1}{x}dx=\ln(2)}
 \end{gather*}
+
+\section{Consider sequence $\{x_n\}$ such that $0\leq x_1<x_2$ and $x_n=\frac{x_{n-1}+x_{n-2}}{2},\forall n\geq3$. Show that $\{x_n\}\rightarrow\frac{x_1+2x_2}{3}$.}
+\begin{align*}	
+x_n-x_{n-1}&=\frac{x_{n-1}+x_{n-2}}{2}-x_{n-1} \\
+&=\frac{x_{n-2}-x_{n-1}}{2} \\
+&=-\frac{1}{2}(x_{n-1}-x_{(n-1)-1}) \\
+\Delta x_n&=-\frac{\Delta x_{n-1}}{2} \\
+&=(x_2-x_1)(-\frac{1}{2})^n \marginnote{recursive to $\Delta x_2=x_2-x_1$} \\
+x_n&=x_1+\sum_{k=1}^{n-2}(x_2-x_1)(-\frac{1}{2})^n \\
+\lim_{n\rightarrow\infty}x_n&=x_1+\frac{x_2-x_1}{1+\frac{1}{2}} \marginnote{geometric series to $\infty$} \\
+&=x_1+\frac{2x_2-2x_1}{3} \\
+&=\boxed{\frac{x_1+2x_2}{3}}
+\end{align*}
 
 \end{document}
