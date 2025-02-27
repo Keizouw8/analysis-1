@@ -1,0 +1,65 @@
+\documentclass[letterpaper]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{marginnote}
+\usepackage{mathtools}
+\usepackage{changepage}
+
+\title{Homework 4}
+\author{Keizou Wang}
+\date{February 26, 2025}
+
+\titleformat{\section}{\normalfont\normalsize}{\bfseries\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize}{(\textit{\roman{subsection}})}{1em}{}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+\begin{document}
+
+\maketitle
+
+\section{Consider the following continued fraction: $1+\frac{1}{2+\frac{1}{2+\frac{1}{2+\dotsb}}}$.}
+\subsection{Write the above continued fraction as the limit of a sequence. Then write a (first-order) recurrence relation between the terms of the sequence.}
+\begin{gather*}
+x_1=1+\frac{1}{2}=\frac{3}{2} \\
+x_n=1+\frac{1}{1+x_{n-1}}=\frac{2+x_{n-1}}{1+x_{n-1}} \\
+\lim_{n\rightarrow\infty}x_n=1+\frac{1}{2+\frac{1}{2+\frac{1}{2+\dotsb}}}
+\end{gather*}
+\subsection{Show that the sequence is bounded.}
+\begin{gather*}
+1+\frac{1}{1+x_{n-1}}<1+\frac{1}{1+0} \marginnote{$x_{n-1}\in P$} \\
+\therefore \\
+\boxed{x_n<2}
+\end{gather*}
+\subsection{Show that the subsequence of odd-indexed terms and even-indexed terms are monotonic.}
+{\allowdisplaybreaks
+\begin{align*}
+x_{n+2}-x_n&=1+\frac{1}{1+x_{n+1}}-(1+\frac{1}{1+x_{n-1}}) \\
+&=\frac{1}{1+x_{n+1}}-\frac{1}{1+x_{n-1}} \\
+&=\frac{x_{n-1}-x_{n+1}}{(1+x_{n+1})(1+x_{n-1})} \marginnote{(1)} \\
+&=\frac{x_{n-1}}{(1+x_{n+1})(1+x_{n-1})}-\frac{x_{n+1}}{(1+x_{n+1})(1+x_{n-1})} \\
+&=\frac{2+x_{n-2}}{(1+x_{n-2})(1+x_{n+1})(1+x_{n-1})}-\frac{2+x_n}{(1+x_n)(1+x_{n+1})(1+x_{n-1})} \\
+&=\frac{(2+x_{n-2})(1+x_n)-(2+x_n)(1+x_{n-2})}{(1+x_{n-2})(1+x_n)(1+x_{n+1})(1+x_{n-1})} \\
+&=\frac{x_n-x_{n-2}}{(1+x_{n-2})(1+x_n)(1+x_{n+1})(1+x_{n-1})} \marginnote{(2)}
+\end{align*}}
+\begin{center}
+(2) shows $x_n\gtrless x_{n-2}\Rightarrow x_{n+2}\gtrless x_{n}\therefore$ odd and even terms separately monotonic \\
+(1) shows if one is monotonic increasing the other is monotonic decreasing
+\end{center}
+\subsection{Show that the above continued fraction converges and find the limit.}
+\begin{gather*}
+\text{By MCT, let }\lim_{n\rightarrow\infty}x_{2n+1}=l_1 \land \lim_{n\rightarrow\infty}x_{2n}=l_2 \\
+l_1=1+\frac{1}{1+l_2} \land l_2=1+\frac{1}{1+l_1} \\
+l_1=l_2=l \\
+l=1+\frac{1}{1+l} \\
+(l-1)(l+1)=1 \\
+l^2-1=1 \\
+l^2=2 \\
+l=\sqrt{2} \\
+\therefore \\
+\boxed{\lim_{n\rightarrow\infty}x_n=\sqrt{2}}
+\end{gather*}
+
+\end{document}
