@@ -1,0 +1,51 @@
+\documentclass[letterpaper]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{marginnote}
+\usepackage{mathtools}
+\usepackage{changepage}
+
+\title{Homework 5}
+\author{Keizou Wang}
+\date{March 7, 2025}
+
+\titleformat{\section}{\normalfont\normalsize}{\bfseries\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize}{(\textit{\roman{subsection}})}{1em}{}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+\begin{document}
+
+\maketitle
+
+\section{Let $\sum x_n$ be an infinite series of positive terms. (\textbf{Do any three})}
+\subsection{Show that $\sum x_n$ is convergent $\Rightarrow\sum x_n^2$ is convergent.}
+\begin{gather*}
+\sum x_n=l\Rightarrow \lim_{n\rightarrow\infty}x_n=0 \\
+\exists N_\epsilon:n>N_\epsilon\Rightarrow x_n<\epsilon \marginnote{$x_n\in P$ so $\abs{x_n}$ not needed} \\
+\exists N_1:n>N_1\Rightarrow x_n<1 \\
+\sum x_n^2\Leftrightarrow\sum_{n=N_1}^{\infty}x_n^2 \\
+n>N_1:x_n^2<x_n\land\sum_{n=N_1}^{\infty}x_n\text{ is convergent} \\
+\sum_{n=N_1}^{\infty}x_n^2\text{ is convergent} \\
+\therefore \\
+\boxed{\sum x_n^2\text{ is convergent}}
+\end{gather*}
+\subsection{Show that $\sum x_n$ is convergent $\Rightarrow\sum \frac{x_n}{n}$ is convergent.}
+\begin{gather*}
+\frac{x_n}{n}<x_n \land \sum x_n \text{ is convergent} \\
+\therefore \\
+\boxed{\sum\frac{x_n}{n}\text{ is convergent}}
+\end{gather*}
+\subsection{Show that $\sum x_n$ is convergent $\Rightarrow\sum \sqrt{x_nx_{n+1}}$ is convergent.}
+\begin{center}\end{center}
+\subsection{Show that $\sum x_n$ is convergent $\Rightarrow\sum \frac{x_n}{1+x_n}$ is convergent.}
+\begin{gather*}
+\frac{x_n}{1+x_n}<x_n \land \sum x_n \text{ is convergent} \\
+\therefore \\
+\boxed{\sum\frac{x_n}{1+x_n}\text{ is convergent}}
+\end{gather*}
+\subsection{Let $y_n=\frac{x_1+x_2+\dotsb+x_n}{n}$. Show that $\sum y_n$ is divergent.}
+
+\end{document}
