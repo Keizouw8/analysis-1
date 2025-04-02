@@ -1,0 +1,246 @@
+\documentclass[letterpaper]{article}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{marginnote}
+\usepackage{mathtools}
+\usepackage{changepage}
+
+\title{Homework 6}
+\author{Keizou Wang}
+\date{April 2, 2025}
+
+\titleformat{\section}{\normalfont\normalsize}{\bfseries\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize}{(\textit{\roman{subsection}})}{1em}{}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\range{[}{]}
+\DeclarePairedDelimiter\paren{(}{)}
+
+\begin{document}
+
+\maketitle
+
+\section{Use $\epsilon-\delta$ definition to show that:}
+\subsection{$f(x)=x^2+2x+1$ is continuous on its domain.}
+\begin{gather*}
+	\text{Given } \epsilon>0,a\in\mathbb{R} \\
+	\abs{f(x)-f(a)}<\epsilon \\
+	\abs{x^2+2x+1-(a^2+2a+1)}<\epsilon \\
+	\abs{(x+a)(x-a)+2(x-a)}<\epsilon \\
+	\abs{x-a}\abs{x+a+2}<\epsilon \\
+	\Leftarrow \abs{x-a}(\abs{x}+\abs{a}+\abs{2})<\epsilon \marginnote{$\triangle$-ineq} \\
+	\delta<1\Rightarrow\abs{x}<\abs{a}+1 \Rightarrow \abs{x-a}(\abs{x}+\abs{a}+\abs{2})<\abs{x-a}(2\abs{a}+3)\marginnote{capping $\delta$ to $1$} \\
+	\Leftarrow \abs{x-a}<\frac{\epsilon}{2\abs{a}+3}=\delta \\
+	\therefore \\
+	\boxed{\exists\delta:|x-a|<\delta\Rightarrow\abs{f(x)-f(a)}<\epsilon}
+\end{gather*}
+\subsection{$f(x)=\sqrt{x}$ is continuous on its domain.}
+\begin{gather*}
+	\text{Given } \epsilon>0,a\in P \\
+	\abs{f(x)-f(a)}<\epsilon \\
+	\abs{\sqrt{x}-\sqrt{a}}<\epsilon \\
+	\abs{(\sqrt{x}-\sqrt{a})\cdot\frac{\sqrt{x}+\sqrt{a}}{\sqrt{x}+\sqrt{a}}}<\epsilon \\
+	\abs{\frac{x-a}{\sqrt{x}+\sqrt{a}}}<\epsilon \\
+	\Leftarrow\abs{\frac{x-a}{2\sqrt{a+\epsilon}}}<\epsilon \text{ } \because \text{ } a<a+\epsilon\land x\leq a+\epsilon \\
+	\abs{x-a}<2\epsilon\sqrt{a+\epsilon}=\delta \\
+	\therefore \\
+	\boxed{\exists\delta:|x-a|<\delta\Rightarrow\abs{f(x)-f(a)}<\epsilon}
+\end{gather*}
+
+\section{Give an example of a function $f:\mathbb{R}\rightarrow\mathbb{R}$ such that it is discontinuous at $S$ but is continuous at every other point. Justify your answer.}
+\subsection{$S=\{1,\frac{1}{2},\frac{1}{3},\frac{1}{4},\dotsb\}$}
+\[ g(x)=\begin{cases} 
+      0 & x\leq 0 \\
+      e^{-\floor{\frac{1}{x}}} & x>0
+   \end{cases}
+\]
+\begin{gather*}
+	\line(1, 0){125} \\
+	\text{Case 1: } x<0 \\
+	\delta=\abs{x} \\
+	\forall \epsilon>0 \Rightarrow\exists\delta:\forall a:\abs{x-a}<\delta\Rightarrow\abs{g(x)-g(a)}<\epsilon \\
+	\therefore g\text{ continuous} \\
+	\line(1, 0){125} \\
+	\text{Case 2: } x=0 \\
+	g(0)=0 \\
+	\lim_{x\rightarrow0-}g(x)=\lim_{x\rightarrow0-}0=0 \\
+	\lim_{x\rightarrow0+}g(x)=\lim_{x\rightarrow0+}e^{-\floor{\frac{1}{x}}}=0 \\
+	\lim_{x\rightarrow0-}g(x)=g(0)=\lim_{x\rightarrow0+}g(x) \\
+	\therefore g\text{ continuous} \\
+	\line(1, 0){125} \\
+	\text{Case 3: } x\in P\cap S \\
+	\abs{e^{-\floor{\frac{1}{x}}}-e^{-\floor{\frac{1}{a}}}}<\epsilon \\
+	\Leftarrow \abs{x-a}<\min(1-x\bmod1,x\bmod1)=\delta \\
+	\forall \epsilon>0 \Rightarrow\exists\delta:\forall a:\abs{x-a}<\delta\Rightarrow\abs{g(x)-g(a)}<\epsilon \\
+	\therefore g\text{ continuous} \\
+	\line(1, 0){125} \\
+	\text{Case 4: } x\in S \\
+	\forall a\in(x,\frac{1}{x^{-1}+1})\Rightarrow\exists\epsilon>0:\abs{e^{-\floor{\frac{1}{x}}}-e^{-\floor{\frac{1}{a}}}}>\epsilon \\
+	\therefore \lim_{a\rightarrow x^+}g(a)\neq g(x)\Rightarrow g \text{ discontinuous} \\
+	\line(1, 0){125} \\
+	\forall x\notin S: g(x)\text{ continuous} \\
+	f(x)=x\sin(x)+g(x) \marginnote{cont.+cont.=cont., cont.+disc.=disc.} \\
+	\therefore \\
+	\boxed{\exists f \text{ continuous } \forall x\notin S,\text{discontinuous } \forall x\in S}
+\end{gather*}
+\subsection{$S=\{0, 1,\frac{1}{2},\frac{1}{3},\frac{1}{4},\dotsb\}$}
+\begin{gather*}
+	g(x)=\floor[\bigg]{\frac{1}{x}}+\abs[\bigg]{\floor[\bigg]{\frac{1}{x}}} \\
+	\line(1, 0){125} \\
+	\text{Case 1: } x<0 \\
+	\floor[\bigg]{\frac{1}{x}}\notin P \Rightarrow g(x)=0 \\
+	\delta=\abs{x} \\
+	\forall \epsilon>0 \Rightarrow\exists\delta:\forall a:\abs{x-a}<\delta\Rightarrow\abs{g(x)-g(a)}<\epsilon \\
+	\therefore g\text{ continuous} \\
+	\line(1, 0){125} \\
+	\text{Case 2: } x=0 \\
+	g(x) \text{ DNE} \\
+	\therefore g\text{ discontinuous} \\
+	\line(1, 0){125} \\
+	\text{Case 3: } x\in P\cap\{\frac{1}{n}:n\in\mathbb{N}\} \\
+	\abs[\bigg]{\floor[\bigg]{\frac{1}{x}}+\abs[\bigg]{\floor[\bigg]{\frac{1}{x}}}-\floor[\bigg]{\frac{1}{a}}-\abs[\bigg]{\floor[\bigg]{\frac{1}{a}}}}<\epsilon \\
+	2\abs[\bigg]{\floor[\bigg]{\frac{1}{x}}-\floor[\bigg]{\frac{1}{a}}}<\epsilon \\
+	\Leftarrow \abs{x-a}<\min(1-x\bmod1,x\bmod1)=\delta \\
+	\forall \epsilon>0 \Rightarrow\exists\delta:\forall a:\abs{x-a}<\delta\Rightarrow\abs{g(x)-g(a)}<\epsilon \\
+	\therefore g\text{ continuous} \\
+	\line(1, 0){125} \\
+	\text{Case 4: } x\in\{\frac{1}{n}:n\in\mathbb{N}\} \\
+	\forall a\in(x,\frac{1}{x^{-1}+1})\Rightarrow2\abs[\bigg]{\floor[\bigg]{\frac{1}{x}}-\floor[\bigg]{\frac{1}{a}}}=2>\epsilon,\forall\epsilon<2 \\
+	\therefore \lim_{a\rightarrow x^+}g(a)\neq g(x)\Rightarrow g \text{ discontinuous} \\
+	\line(1, 0){125} \\
+	\forall x\notin S: g(x)\text{ continuous} \\
+	f(x)=x\sin(x)+g(x) \marginnote{cont.+cont.=cont., cont.+disc.=disc.} \\
+	\therefore \\
+	\boxed{\exists f \text{ continuous } \forall x\notin S,\text{discontinuous } \forall x\in S}
+\end{gather*}
+
+\section{}
+\subsection{Show that if $f_1,f_2$ are continuous functions, then $g=\max(f_1,f_2)$ and $h=\min(f_1,f_2)$ also are.}
+\begin{gather*}
+	\begin{aligned}
+		\text{Let } &L=\{x:f_1(x)=f_2(x)\} \\
+		&F=\{f_1,f_2\} \\
+		&x_1=\sup(\{a:a<x,a\in L\}) \\
+		&x_2=\inf(\{a:a>x,a\in L\}) \\
+	\end{aligned} \\
+	x\in L\lor x\notin L \\
+	\line(1, 0){125} \\
+	\text{Case 1: } x\notin L \\
+	\exists f_g\in F:x_1<a<x_2\Rightarrow f_g(a)=g(a) \\
+	f_g\text{ continuous}\Rightarrow\exists\delta_1:\forall a:\abs{x-a}<\delta_1\Rightarrow\abs{f_g(x)-f_g(a)}<\epsilon \\
+	\text{Let }\delta_g=\min(\delta_1,\abs{x-x_1},\abs{x-x_2}) \\
+	\delta_g\leq\delta_1\land x_1\leq x-\delta_g<x+\delta_g\leq x_2\Rightarrow\forall a:\abs{x-a}<\delta_g\Rightarrow\abs{g(x)-g(a)}<\epsilon \\
+	\therefore \forall x\notin L\Rightarrow g\text{ continuous @ }x \\
+	\exists f_h\in F:x_1<a<x_2\Rightarrow f_h(a)=h(a) \\
+	f_h\text{ continuous}\Rightarrow\exists\delta_2:\forall a:\abs{x-a}<\delta_2\Rightarrow\abs{f_h(x)-f_h(a)}<\epsilon \\
+	\text{Let }\delta_h=\min(\delta_2,\abs{x-x_1},\abs{x-x_2}) \\
+	\delta_h\leq\delta_2\land x_1\leq x-\delta_h<x+\delta_h\leq x_2\Rightarrow\forall a:\abs{x-a}<\delta_h\Rightarrow\abs{h(x)-h(a)}<\epsilon \\
+	\therefore \forall x\notin L\Rightarrow h\text{ continuous @ }x \\
+	\line(1, 0){125} \\
+	\text{Case 2: } x\in L \\
+	\exists f_{g1}\in F:x_1<a<x\Rightarrow f_{g1}(a)=g(a) \\
+	\exists f_{g2}\in F:x<a<x_2\Rightarrow f_{g2}(a)=g(a) \\
+	f_{g1}\text{ continuous}\Rightarrow\exists\delta_{g1}:\forall a:x-a<\delta_{g1}\Rightarrow\abs{g(x)-g(a)}<\epsilon \\
+	f_{g2}\text{ continuous}\Rightarrow\exists\delta_{g2}:\forall a:a-x<\delta_{g2}\Rightarrow\abs{g(x)-g(a)}<\epsilon \\
+	\text{Let }\delta_g=\min(\delta_{g1},\delta_{g2}) \\
+	\forall a:x-a<\delta_g\lor a-x<\delta_g\Rightarrow\abs{g(x)-g(a)}<\epsilon \\
+	\exists\delta_g:\forall a:\abs{x-a}<\delta_g\Rightarrow\abs{g(x)-g(a)}<\epsilon \\
+	\therefore \forall x\in L\Rightarrow g\text{ continuous @ }x \\
+	\exists f_{h1}\in F:x_1<a<x\Rightarrow f_{h1}(a)=h(a) \\
+	\exists f_{h2}\in F:x<a<x_2\Rightarrow f_{h2}(a)=h(a) \\
+	f_{h1}\text{ continuous}\Rightarrow\exists\delta_{h1}:\forall a:x-a<\delta_{h1}\Rightarrow\abs{h(x)-h(a)}<\epsilon \\
+	f_{h2}\text{ continuous}\Rightarrow\exists\delta_{h2}:\forall a:a-x<\delta_{h2}\Rightarrow\abs{h(x)-h(a)}<\epsilon \\
+	\displaybreak
+	\text{Let }\delta_h=\min(\delta_{h1},\delta_{h2}) \\
+	\forall a:x-a<\delta_h\lor a-x<\delta_h\Rightarrow\abs{h(x)-h(a)}<\epsilon \\
+	\exists\delta_h:\forall a:\abs{x-a}<\delta_h\Rightarrow\abs{h(x)-h(a)}<\epsilon \\
+	\therefore \forall x\in L\Rightarrow h\text{ continuous @ }x \\
+	\line(1, 0){125} \\
+	\therefore \\
+	\boxed{g\text{ and }h\text{ continuous}}
+\end{gather*}
+\subsection{Let $f$ be a continuous function. Prove that $f(x)$ can always be written as $f(x)=g(x)-h(x)$, where $g,h$ are continuous functions and non-negative.}
+\begin{gather*}
+	\begin{aligned}
+		\text{Let }&g(x)=\abs{\max(f(x),2f(x))} \\
+		&h(x)=\abs{\min(f(x),2f(x))}
+	\end{aligned} \\
+	g(x)\text{ continuous }\land h(x)\text{ continuous }\because \textbf{ 3}(\textit{i}) \\
+	g(x)-h(x)=f(x)
+\end{gather*}
+
+\section{[\textcolor{red}{Applications of IVP}; \textbf{Do any three}]}
+\subsection{If $f:[a,b]\rightarrow[a,b]$ is continuous on $[a,b]$, then $f$ has a fixed point (that is, $f(c)=c$ for some $c\in[a,b]$)}
+\begin{gather*}
+	\text{Let }g(x)=f(x)-x \\
+	\text{Note }g(x)=0\Leftrightarrow f(x)=x \\
+	f(a)\geq a\Rightarrow g(a)\geq0 \\
+	f(b)\geq b\Rightarrow g(b)\leq0 \\
+	\text{sgn}(g(a))\neq\text{sgn}(g(b))\Rightarrow\exists c\in[a,b]:g(c)=0 \marginnote{Bolzano's thm.} \\
+	\therefore \\
+	\boxed{\exists c\in[a,b]:f(c)=c}
+\end{gather*}
+\subsection{Prove that at any given instant, some two diametrically opposite points on the Equator of our Earth have the same temperature.}
+\begin{gather*}
+	T(x):[0,2\pi]\rightarrow\mathbb{R} \marginnote{temp. model func.} \\
+	\begin{aligned}
+		\text{Let }&f(x):[0,\pi]=T(x) \\
+		&g(x):[0,\pi]=T(x+\pi) \\
+		&a=f(0)=g(\pi) \\
+		&b=f(\pi)=g(0)
+	\end{aligned} \\
+	\exists\text{ 2 anti-podal points with same temp.} \Rightarrow \exists c:f(c)=g(c) \\
+	\line(1, 0){125} \\
+	\text{Case 1: }a=b \displaybreak \\
+	\therefore f(0)=g(0) \\
+	\line(1, 0){125} \\
+	\text{Case 2: }a\neq b  \\
+	\text{Let }g(x)=f(x)-g(x) \\
+	\text{Note }g(x)=0\Leftrightarrow f(x)=g(x) \\
+	h(0)=a-b\land h(\pi)=b-a\Rightarrow h(0)=-h(\pi) \marginnote{opposite signs} \\
+	\therefore \exists c:h(c)=0\Rightarrow\exists c:f(c)=g(c) \marginnote{Bolzano's thm.} \\
+	\line(1, 0){125} \\
+	\therefore \\
+	\boxed{\exists\text{ 2 anti-podal points with same temp.}}
+\end{gather*}
+\setcounter{subsection}{3}
+\subsection{Let $f:[0,1]\rightarrow\mathbb{R}$ be continuous with $f(0)=f(1)$. Show that there must exist $x,y\in[0,1]$ with $\abs{x-y}=\frac{1}{2}$ for which $f(x)=f(y)$.}
+\begin{gather*}
+	\begin{aligned}
+		\text{Let }&g(x):\range[\bigg]{0,\frac{1}{2}}=f(x) \\
+		&h(x):\range[\bigg]{0,\frac{1}{2}}=f(x+\frac{1}{2}) \\
+		&a=g(0)=h(\frac{1}{2}) \\
+		&b=g(\frac{1}{2})=h(0)
+	\end{aligned} \\
+	\text{Note } \exists x,y\in\range{0, 1}:\abs{x-y}=\frac{1}{2}\land f(x)=f(y) \Leftrightarrow \exists c:g(c)=h(c) \\
+	\line(1, 0){125} \\
+	\text{Case 1: }a=b \\
+	\therefore g(0)=h(0) \\
+	\line(1, 0){125} \\
+	\text{Case 2: }a\neq b  \\
+	\text{Let }j(x)=g(x)-h(x) \\
+	\text{Note }j(x)=0\Leftrightarrow g(x)=h(x) \\
+	j(0)=a-b\land j(\frac{1}{2})=b-a\Rightarrow j(0)=-j(\frac{1}{2}) \marginnote{opposite signs} \\
+	\therefore \exists c:j(c)=0\Rightarrow\exists c:g(c)=h(c) \marginnote{Bolzano's thm.} \\
+	\line(1, 0){125} \\
+	\therefore \\
+	\boxed{\exists x,y\in\range{0, 1}:\abs{x-y}=\frac{1}{2}\land f(x)=g(x)}
+\end{gather*}
+
+\section{[\textcolor{red}{IVP + Monotonicity $\Rightarrow$ Continuity}] \\ Assume $f$ has IVP in $[a,b]$. Show that if $f$ is increasing on $[a,b]$, then $f$ is also continuous on $[a,b]$.}
+\begin{gather*}
+	\text{Assume the negation: }\exists c\in\range{a,b}:f(c)\neq\lim_{x\rightarrow c}f(x) \\
+	f(c)\neq\lim_{x\rightarrow c}f(x) \Rightarrow \neg(\lim_{x\rightarrow c^-}f(x)=f(c)= \lim_{x\rightarrow c^+}f(x)) \\
+	f\text{ incr.}\Rightarrow\lim_{x\rightarrow c^-}f(x)\leq f(c)< \lim_{x\rightarrow c^+}f(x) \lor \lim_{x\rightarrow c^-}f(x)<f(c)\leq\lim_{x\rightarrow c^+}f(x) \\
+	\lim_{x\rightarrow c^-}f(x)< \lim_{x\rightarrow c^+}f(x) \\
+	\forall y\in[\lim_{x\rightarrow c^-}f(x),f(c))\cup(f(c),\lim_{x\rightarrow c^+}f(x)]\Rightarrow y\in[f(a),f(b)] \land \nexists x:f(x)=y \\
+	\text{IVP contradiction} \\
+	\therefore \\
+	\boxed{f\text{ continuous on }\range{a,b}}
+\end{gather*}
+
+\end{document}
