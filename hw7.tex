@@ -48,7 +48,34 @@
 	\boxed{\sin'(x)=\cos(x)}
 \end{gather*}
 \subsection{$\cos(x)$}
+\begin{gather*}
+	\begin{aligned}
+		\cos'(x)&=\lim_{h\rightarrow0}\frac{\cos(x+h)-\cos(x)}{h} \\
+		&=\lim_{h\rightarrow0}\frac{\cos(x)\cos(h)-\sin(x)\sin(h)-\cos(x)}{h} \\
+		&=\lim_{h\rightarrow0}\frac{\cos(x)(\cos(h)-1)-\sin(x)\sin(h)}{h} \\
+		&=\cos(x)\lim_{h\rightarrow0}\frac{\cos(h)-1}{h}-\sin(x)\lim_{h\rightarrow0}\frac{\sin(h)}{h} \marginnote{$\lim_{h\rightarrow0}\frac{\cos(h)-1}{h}$ found in part i} \\
+		&=\cos(x)\cdot0-\sin(x)\cdot1 
+	\end{aligned} \\
+	\therefore \\
+	\boxed{\cos'(x)=-\sin(x)}
+\end{gather*}
 \subsection{$\tan(x)$}
+\begin{gather*}
+	\begin{aligned}
+		\tan'(x)&=\lim_{h\rightarrow0}\frac{\tan(x+h)-\tan(x)}{h} \\
+		&=\lim_{h\rightarrow0}\frac{1}{h}\paren[\bigg]{\frac{\tan(x)+\tan(h)}{1-\tan(x)\tan(h)}-\tan(x)} \\
+		&=\lim_{h\rightarrow0}\frac{1}{h}\cdot\frac{\tan(x)+\tan(h)-\tan(x)+\tan^2(x)\tan(h)}{1-\tan(x)\tan(h)} \\
+		&=\lim_{h\rightarrow0}\frac{1}{h}\cdot\frac{\tan(h)(1+\tan^2(x))}{1-\tan(x)\tan(h)} \\
+		&=\lim_{h\rightarrow0}\frac{1}{h}\cdot\frac{\tan(h)\sec^2(x)}{1-\tan(x)\tan(h)} \\
+		&=\sec^2(x)\lim_{h\rightarrow0}\frac{1}{h}\cdot\frac{\tan(h)}{1-\tan(x)\tan(h)} \\
+		&=\sec^2(x)\lim_{h\rightarrow0}\frac{\sin(h)}{h}\cdot\frac{1}{\cos(h)}\cdot\frac{1}{1-\tan(x)\tan(h)} \\
+		&=\sec^2(x)\lim_{h\rightarrow0}\frac{\sin(h)}{h}\cdot\frac{1}{\cos(h)}\cdot\frac{1}{1-\tan(x)\tan(h)} \\
+		&=\sec^2(x)\lim_{h\rightarrow0}\frac{\sin(h)}{h}\cdot\lim_{h\rightarrow0}\frac{1}{\cos(h)}\cdot\lim_{h\rightarrow0}\frac{1}{1-\tan(x)\tan(h)} \\
+		&=\sec^2(x)\cdot1\cdot1\cdot1 \\
+	\end{aligned} \\
+	\therefore \\
+	\boxed{\tan'(x)=\sec^2(x)}
+\end{gather*}
 
 \pagebreak
 
@@ -72,15 +99,15 @@
 	\text{Let }g(a)=\frac{f(a)-f(x)}{a-x}=\frac{f(a)}{a-x} \\
 	\begin{aligned}
 		\exists f'&\Rightarrow\exists L:\lim_{a\rightarrow x}g=L \\
-		&\Rightarrow \forall\epsilon>0, \exists\delta:\forall b:|a-b|<\delta,|g(b)-L|<\epsilon \\
+		&\Rightarrow \forall\epsilon>0, \exists\delta:\forall a:|a-x|<\delta,|g(a)-L|<\epsilon \\
 	\end{aligned} \\
-	\mathbb{Q}\text{ dense in }[0,1]\Rightarrow\exists b=\frac{m}{n}:m,n\in\mathbb{N},|a-b|<\delta \\
-	\text{Consider }b:n>\frac{1}{\delta(\epsilon+|L|)} \\
-	|g(b)-L|<\epsilon \\
+	\mathbb{Q}\text{ dense in }[0,1]\Rightarrow\exists a=\frac{m}{n}:m,n\in\mathbb{N},|a-x|<\delta \\
+	\text{Consider }a:n>\frac{1}{\delta(\epsilon+|L|)} \\
+	|g(a)-L|<\epsilon \\
 	\begin{aligned}
-		&\Leftarrow\abs[\bigg]{\frac{f(b)}{b-x}-L}<\epsilon \\
-		&\Leftarrow\abs[\bigg]{\frac{\frac{1}{n}}{b-x}}-\abs{L}<\epsilon \\
-		&\Leftarrow\abs[\bigg]{\frac{1}{n(b-x)}}<\epsilon+\abs{L} \\
+		&\Leftarrow\abs[\bigg]{\frac{f(a)}{a-x}-L}<\epsilon \\
+		&\Leftarrow\abs[\bigg]{\frac{\frac{1}{n}}{a-x}}-\abs{L}<\epsilon \\
+		&\Leftarrow\abs[\bigg]{\frac{1}{n(a-x)}}<\epsilon+\abs{L} \\
 		&\Leftarrow\frac{1}{n\delta}<\epsilon+\abs{L} \\
 		&\Leftarrow\frac{1}{\frac{1}{\delta(\epsilon+|L|)}\delta}<\epsilon+\abs{L} \\
 		&\Leftarrow\epsilon+\abs{L}<\epsilon+\abs{L} \\
@@ -93,6 +120,26 @@
 \end{gather*}
 
 \section{Which is greater, $e^\pi$ or $\pi^e$?}
+\begin{gather*}
+	\begin{aligned}
+		\text{Let } &f(x)=\ln(x), f'(x)=\frac{1}{x} \\
+		& g(x)=x, g'(x)=1
+	\end{aligned} \\
+	\exists c\in(\pi^e,e^\pi):\frac{f'(c)}{g'(c)}=\frac{f(e^\pi)-f(\pi^e)}{g(e^\pi)-g(\pi^e)} \\
+	f'(c)(g(e^\pi)-g(\pi^e))=g'(c)(f(e^\pi)-f(\pi^e)) \\
+	\frac{e^\pi-\pi^e}{c}=\ln(e^\pi)-\ln(\pi^e) \\
+	\frac{e^\pi-\pi^e}{c}=\pi-e\ln(\pi) \\
+	e^\pi-\pi^e>\pi-e\ln(\pi) \\
+	\line(1, 0){125} \\
+	\text{Consider }h(x)=x-e\ln(x),h'(x)=1-\frac{e}{x} \\
+	h(e)=e-e\ln(e)=0 \\
+	\forall x>e, \frac{e}{x}<1\Rightarrow h'(x)>0 \\
+	\pi>e\Rightarrow h(\pi)>0 \\
+	\line(1, 0){125} \\
+	e^\pi-\pi^e>0 \\
+	\therefore \\
+	\boxed{e^\pi>\pi^e}
+\end{gather*}
 
 \section{Prove that in any interval in which the functions $f,g,f',g'$ are continuous and $fg'-f'g\neq0$, then the roots of f and g `separate' each other.}
 \begin{gather*}
@@ -117,5 +164,78 @@
 \end{gather*}
 
 \section{[\textcolor{red}{Some inequalities using MVT}] Apply MVT to prove the following inequalities}
+\subsection{$x-\frac{x^3}{6}<\sin(x)<x;\forall0<x<\frac{\pi}{2}$}
+\begin{gather*}
+	\sin'(x)=\cos(x) \\
+	\forall x, \exists c\in(0,x):\sin'(c)=\frac{\sin(x)-\sin(0)}{x-0} \\
+	\cos(c)=\frac{\sin(x)}{x} \\
+	x\cos(c)=\sin(x) \\
+	\forall x\in\paren[\bigg]{0,\frac{\pi}{2}},\cos(x)<1\Rightarrow x>\sin(x) \\
+	\line(1, 0){125} \\
+	f(x)=\sin(x)-x+\frac{x^3}{6} \displaybreak \\
+	f'(x)=\cos(x)-1+\frac{x^2}{2} \\
+	\forall x, \exists c\in(0,x):f'(c)=\frac{f(x)-f(0)}{x-0} \\
+	\frac{\sin(x)-x+\frac{x^3}{6}}{x}=\cos(c)-1+\frac{c^2}{2} \\
+	\sin(x)-x+\frac{x^3}{6}=x\paren[\bigg]{\cos(c)+\frac{c^2}{2}}-x \\
+	\sin(x)+\frac{x^3}{6}=x\paren[\bigg]{\cos(c)+\frac{c^2}{2}} \\
+	\text{Let }g(x)=\cos(x)+\frac{x^2}{2} \\
+	g(0)=1, g'(x)=x-\sin(x) \\
+	\begin{aligned}
+		\forall x\in(0,c), \sin(x)<x &\Rightarrow \forall x\in(0,c), g'(x) > 0 \\
+		&\Rightarrow g(c)>1
+	\end{aligned} \\
+	\sin(x)+\frac{x^3}{6}>x \\
+	\sin(x)>x-\frac{x^3}{6} \\
+	\line(1, 0){125} \\
+	\therefore \\
+	\boxed{x-\frac{x^3}{6}<\sin(x)<x;\forall0<x<\frac{\pi}{2}}
+\end{gather*}
+\subsection{$x-\frac{x^2}{2}<\ln(1+x)<x;\forall x>0$}
+\begin{gather*}
+	f(x)=\ln(1+x) \\
+	f'(x)=\frac{1}{1+x} \\
+	\forall x,\exists c\in(0,x):f'(c)=\frac{f(x)-f(0)}{x-0} \\
+	\frac{1}{1+c}=\frac{\ln(1+x)-\ln(1)}{x} \\
+	\frac{x}{1+c}=\ln(1+x) \\
+	\forall c\in(0,x),\frac{1}{1+c}<1\Rightarrow \ln(1+x)<x \\
+	\line(1, 0){125} \\
+	f(x)=\ln(1+x)-x+\frac{x^2}{2} \displaybreak \\
+	f'(x)=\frac{1}{1+x}+x-1  \\
+	\exists c\in(0,x):f'(c)=\frac{f(x)-f(0)}{x-0} \\
+	\frac{1}{1+c}+c-1=\frac{\ln(1+x)-x+\frac{x^2}{2}}{x} \\
+	x(\frac{1}{1+c}+c)-x=\ln(1+x)-x+\frac{x^2}{2} \\
+	x(\frac{1}{1+c}+c)=\ln(1+x)+\frac{x^2}{2} \\
+	\frac{1}{1+c}+c>1\Rightarrow \ln(1+x)+\frac{x^2}{2}>x \\
+	\ln(1+x)>x-\frac{x^2}{2} \\
+	\line(1, 0){125} \\
+	\therefore \\
+	\boxed{x-\frac{x^2}{2}<\ln(1+x)<x;\forall x>0}
+\end{gather*}
+
+\section{[\textcolor{red}{Leibniz's General Product Rule for Derivatives}] Let $f,g$ have $n^{th}$ order derivatives on $(a, b)$, where $f^{(k)}(c) ,g^{(k)}(c)$ denotes the $k^{th}$ order derivative of $f$ and $g$ at $c$, respectively. Also let $h=f\cdot g$. Show that for any $c\in(a,b)$,}
+\begin{displaymath}
+	h^{(n)}(c)=\sum_{k=0}^{n}\binom{n}{k}f^{(k)}(c)\cdot g^{(n-k)}(c)
+\end{displaymath}
+\begin{gather*}
+	\text{Base case: }n=1 \\
+	h^{(1)}(c)=f'(c)g(c)+f(c)g'(c) \\
+	\sum_{k=0}^{1}\binom{1}{k}f^{(k)}(c)\cdot g^{(1-k)}(c)=f'(c)g(c)+f(c)g'(c) \\
+	h^{(1)}(c)=\sum_{k=0}^{1}\binom{1}{k}f^{(k)}(c)\cdot g^{(1-k)}(c) \\
+	\line(1, 0){125} \\
+	\text{Inductive case: } \\
+	\text{Let } d(F,G)=(FG)'=\sum_{k=0}^{1}\binom{1}{k}f^{(k)}(c)\cdot g^{(1-k)}(c) \displaybreak \\
+	\begin{aligned}
+		h^{(n+1)}(c)&=\paren[\bigg]{\sum_{k=0}^{n}\binom{n}{k}f^{(k)}(c)\cdot g^{(n-k)}(c)}' \\
+		&=\sum_{k=0}^{n}\binom{n}{k}\paren[\bigg]{f^{(k)}(c)\cdot g^{(n-k)}(c)}' \\
+		&=\sum_{k=0}^{n}\binom{n}{k}(f^{(k)}(c)\cdot g^{(n-k)}(c))' \\
+		&=\sum_{k=0}^{n}\binom{n}{k}\paren[\bigg]{\sum_{k'=0}^{1}\binom{1}{k'}f^{(k+k')}(c)\cdot g^{(n-k+1-k')}(c)} \\
+		&=\sum_{k=0}^{n}\binom{n}{k}f^{(k)}(c)\cdot g^{(n-k+1)}(c)+\binom{n}{k}f^{(k+1)}(c)\cdot g^{(n-k)}(c) \\
+		&=\sum_{k=0}^{n+1}\binom{n+1}{k}f^{(k)}(c)\cdot g^{((n+1)-k)}(c) \\
+	\end{aligned} \\
+	\line(1, 0){125} \\
+	\text{By Induction} \\
+	\therefore \\
+	\boxed{h^{(n)}(c)=\sum_{k=0}^{n}\binom{n}{k}f^{(k)}(c)\cdot g^{(n-k)}(c)}
+\end{gather*}
 
 \end{document}
