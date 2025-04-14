@@ -1,0 +1,121 @@
+\documentclass[letterpaper]{article}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{marginnote}
+\usepackage{mathtools}
+\usepackage{changepage}
+
+\title{Homework 7}
+\author{Keizou Wang}
+\date{April 14, 2025}
+
+\titleformat{\section}{\normalfont\normalsize}{\bfseries\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize}{(\textit{\roman{subsection}})}{1em}{}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\range{[}{]}
+\DeclarePairedDelimiter\paren{(}{)}
+
+\begin{document}
+
+\maketitle
+
+\section{Use the definition of derivative, knowledge of trigonometry and standard limits to find the derivatives of:}
+\subsection{$\sin(x)$}
+\begin{gather*}
+	\begin{aligned}
+		\sin'(x)&=\lim_{h\rightarrow 0}\frac{\sin(x+h)-\sin(x)}{h} \\
+		&=\lim_{h\rightarrow 0}\frac{\sin(x)\cos(h)+\sin(h)\cos(x)-\sin(x)}{h} \marginnote{angle sum formula} \\
+		&=\lim_{h\rightarrow 0}\frac{\sin(x)(\cos(h)-1)+\sin(h)\cos(x)}{h} \\
+		&=\lim_{h\rightarrow 0}\sin(x)\frac{\cos(h)-1}{h}+\cos(x)\frac{\sin(h)}{h} \\
+		&=\sin(x)\lim_{h\rightarrow 0}\frac{\cos(h)-1}{h}+\cos(x)\lim_{h\rightarrow 0}\frac{\sin(h)}{h} \\
+	\end{aligned} \\
+	\lim_{h\rightarrow 0}\frac{\sin(h)}{h}=1 \marginnote{standard limit} \\
+	\begin{aligned}
+		\lim_{h\rightarrow 0}\frac{\cos(h)-1}{h}&=\lim_{h\rightarrow 0}\frac{\cos(h)-1}{h}\cdot\frac{\cos(h)+1}{\cos(h)+1} \\
+		&=\lim_{h\rightarrow 0}\frac{\cos^2(h)-1}{h(\cos(h)+1)} \\
+		&=\lim_{h\rightarrow 0}-\frac{\sin^2(h)}{h(\cos(h)+1)} \\
+		&=-\lim_{h\rightarrow 0}\frac{\sin(h)}{h}\cdot\frac{\sin(h)}{\cos(h)+1} \\
+		&=-\lim_{h\rightarrow 0}\frac{\sin(h)}{h}\cdot\lim_{h\rightarrow 0}\frac{\sin(h)}{\cos(h)+1} \\
+		&=0
+	\end{aligned} \\
+	\sin'(x)=\sin(x)\cdot0+\cos(x)\cdot1 \\
+	\therefore \\
+	\boxed{\sin'(x)=\cos(x)}
+\end{gather*}
+\subsection{$\cos(x)$}
+\subsection{$\tan(x)$}
+
+\pagebreak
+
+\section{[\textcolor{red}{Continuous almost everywhere, but differentiable nowhere}] Prove that \textit{Thomae's function} $f:[0,1]\rightarrow[0,1]$ is not differentiable at any point.}
+\begin{displaymath}
+	f(x) = \left\{
+		\begin{array}{ll}
+			\frac{1}{n} & x=\frac{m}{n}; m,n\in\mathbb{N};n>0;\text{ in lowest terms} \\
+			0 & x=0 \text{ and otherwise}
+		\end{array}
+	\right.
+\end{displaymath}
+\begin{gather*}
+	\text{Case 1: } x\in\mathbb{Q} \\
+	f \text{ disc. @ } x \marginnote{shown in hw6} \\
+	\therefore \\
+	f \text{ not diff. @ } x \\
+	\line(1, 0){125} \\
+	\text{Case 2: } x\notin\mathbb{Q} \\
+	\text{Assume }f\text{ diff. @ }x \\
+	\text{Let }g(a)=\frac{f(a)-f(x)}{a-x}=\frac{f(a)}{a-x} \\
+	\begin{aligned}
+		\exists f'&\Rightarrow\exists L:\lim_{a\rightarrow x}g=L \\
+		&\Rightarrow \forall\epsilon>0, \exists\delta:\forall b:|a-b|<\delta,|g(b)-L|<\epsilon \\
+	\end{aligned} \\
+	\mathbb{Q}\text{ dense in }[0,1]\Rightarrow\exists b=\frac{m}{n}:m,n\in\mathbb{N},|a-b|<\delta \\
+	\text{Consider }b:n>\frac{1}{\delta(\epsilon+|L|)} \\
+	|g(b)-L|<\epsilon \\
+	\begin{aligned}
+		&\Leftarrow\abs[\bigg]{\frac{f(b)}{b-x}-L}<\epsilon \\
+		&\Leftarrow\abs[\bigg]{\frac{\frac{1}{n}}{b-x}}-\abs{L}<\epsilon \\
+		&\Leftarrow\abs[\bigg]{\frac{1}{n(b-x)}}<\epsilon+\abs{L} \\
+		&\Leftarrow\frac{1}{n\delta}<\epsilon+\abs{L} \\
+		&\Leftarrow\frac{1}{\frac{1}{\delta(\epsilon+|L|)}\delta}<\epsilon+\abs{L} \\
+		&\Leftarrow\epsilon+\abs{L}<\epsilon+\abs{L} \\
+	\end{aligned} \\
+	\text{Contradiction} \\
+	\therefore \\
+	f\text{ not diff. @ }x \\
+	\line(1, 0){125} \\
+	\boxed{f\text{ diff. nowhere}}
+\end{gather*}
+
+\section{Which is greater, $e^\pi$ or $\pi^e$?}
+
+\section{Prove that in any interval in which the functions $f,g,f',g'$ are continuous and $fg'-f'g\neq0$, then the roots of f and g `separate' each other.}
+\begin{gather*}
+	\begin{aligned}
+		\text{Let } &F(x)=f(x)g'(x)-f'(x)g(x) \\
+		&R=\{x:f(x)=0\} \marginnote{roots of $f$} \\
+		&h(x)=\frac{f(x)}{g(x)} \\
+		&\begin{aligned}
+			h'(x)&=\frac{f'(x)g(x)-f(x)g'(x)}{g^2(x)} \\
+			&=\frac{-F(x)}{g^2(x)} \\
+		\end{aligned} \\
+		&a,b\in R:a<b,(a,b)\cap R=\emptyset \marginnote{$a,b$ are consecutive roots of $f$}
+	\end{aligned} \\
+	\line(1, 0){125} \\
+	\text{Assume }\nexists c\in(a,b):g(c)=0 \\
+	g(x)\neq0, \forall x\in(a,b) \Rightarrow h(x) \text{ diff. @ }(a,b) \\
+	F(x)\neq,\forall x\Rightarrow h'(x)\neq0,\forall x \\
+	h(a)=h(b)=0\land h\text{ diff. @ }(a,b)\Rightarrow\exists c\in(a,b):h'(c)=0 \marginnote{Rolle's thm.} \\
+	h'(x)\neq0,\forall x \land \exists c\in(a,b):h'(c)=0\Rightarrow\text{ Contradiction} \\
+	\therefore \\
+	\boxed{\exists c\in(a,b):g(c)=0}
+\end{gather*}
+
+\section{[\textcolor{red}{Some inequalities using MVT}] Apply MVT to prove the following inequalities}
+
+\end{document}
